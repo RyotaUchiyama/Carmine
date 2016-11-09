@@ -1,0 +1,28 @@
+﻿<Window x:Class="Carmine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Carmine"
+        mc:Ignorable="d"
+        Width="{Binding MainWindowWidth}" 
+        MaxWidth="{Binding MainWindowMaxWidth}" 
+        MinWidth="{Binding MainWindowMinWidth}" 
+        Height="{Binding MainWindowHeight}"
+        MaxHeight="{Binding MainWindowMaxHeight}"
+        MinHeight="{Binding MainWindowMinHeight}"
+        Topmost="{Binding MainWindowTopmost}"         
+        WindowStyle="{Binding MainWindowStyle}" 
+        WindowState="{Binding MainWindowState}">
+    <Grid>
+        <Frame 
+            x:Name="MainFrame" 
+            Loaded="MainFrame_Loaded" 
+            NavigationUIVisibility="Hidden" 
+            Navigated="MainFrame_Navigated"    
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Margin="0"
+            HorizontalAlignment="Stretch"/>
+    </Grid>
+</Window>

@@ -1,0 +1,9 @@
+C:\private\source\Carmine\Clayton\bin\Debug\Clayton.dll
+C:\private\source\Carmine\Clayton\bin\Debug\Clayton.pdb
+C:\private\source\Carmine\Clayton\bin\Debug\Anthony.exe
+C:\private\source\Carmine\Clayton\bin\Debug\Anthony.pdb
+C:\private\source\Carmine\Clayton\obj\Debug\Clayton.csprojResolveAssemblyReference.cache
+C:\private\source\Carmine\Clayton\obj\Debug\Clayton.dll
+C:\private\source\Carmine\Clayton\obj\Debug\Clayton.pdb
+C:\private\source\Carmine\Clayton\bin\Debug\Benjamin.dll
+C:\private\source\Carmine\Clayton\bin\Debug\Benjamin.pdb

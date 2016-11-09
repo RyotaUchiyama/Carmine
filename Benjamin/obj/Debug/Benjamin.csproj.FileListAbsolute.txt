@@ -1,0 +1,11 @@
+C:\private\source\Carmine\Benjamin\obj\Debug\Benjamin.csprojResolveAssemblyReference.cache
+C:\private\source\Carmine\Benjamin\obj\Debug\MenuPage.g.cs
+C:\private\source\Carmine\Benjamin\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\private\source\Carmine\Benjamin\obj\Debug\Benjamin_MarkupCompile.cache
+C:\private\source\Carmine\Benjamin\obj\Debug\Benjamin_MarkupCompile.lref
+C:\private\source\Carmine\bin\Debug\Benjamin.dll
+C:\private\source\Carmine\bin\Debug\Benjamin.pdb
+C:\private\source\Carmine\Benjamin\obj\Debug\MenuPage.baml
+C:\private\source\Carmine\Benjamin\obj\Debug\Benjamin.g.resources
+C:\private\source\Carmine\Benjamin\obj\Debug\Benjamin.dll
+C:\private\source\Carmine\Benjamin\obj\Debug\Benjamin.pdb
