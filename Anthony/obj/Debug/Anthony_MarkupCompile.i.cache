@@ -1,7 +1,7 @@
 ﻿Anthony
 
 
-winexe
+library
 C#
 .cs
 C:\private\source\Carmine\Anthony\obj\Debug\
@@ -9,12 +9,12 @@ Carmine
 none
 false
 DEBUG;TRACE
-C:\private\source\Carmine\Anthony\App.xaml
+
 11151548125
 
-14-597246928
+131701332089
 14-239231678
 MainWindow.xaml;
 
-False
+True
 

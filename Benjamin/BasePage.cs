@@ -10,6 +10,24 @@ namespace Carmine
 {
     public class BasePage : Page
     {
+        private string pageName = string.Empty;
+        public string PageName
+        {
+            get
+            {
+                return pageName;
+            }
+        }
+
+        private string assemblyName = string.Empty;
+        public string AssemblyName
+        {
+            get
+            {
+                return assemblyName;
+            }
+        }
+
         public void PageNavigate(string pageName)
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);

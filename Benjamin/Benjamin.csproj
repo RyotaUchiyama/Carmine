@@ -61,6 +61,10 @@
       <Project>{3ba5155f-505b-4240-86a4-f4e51f4204fb}</Project>
       <Name>Anthony</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Carmine\Carmine.csproj">
+      <Project>{364939af-add5-433f-b1ed-b438899ddbf2}</Project>
+      <Name>Carmine</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="MenuPage.xaml">
