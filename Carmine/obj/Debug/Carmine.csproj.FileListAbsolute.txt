@@ -1,13 +1,14 @@
+C:\private\source\Carmine\bin\Debug\Carmine.exe.config
+C:\private\source\Carmine\bin\Debug\Carmine.exe
+C:\private\source\Carmine\bin\Debug\Carmine.pdb
 C:\private\source\Carmine\Carmine\obj\Debug\MainWindow.g.cs
 C:\private\source\Carmine\Carmine\obj\Debug\App.g.cs
 C:\private\source\Carmine\Carmine\obj\Debug\Carmine_MarkupCompile.cache
 C:\private\source\Carmine\Carmine\obj\Debug\Carmine_MarkupCompile.lref
-C:\private\source\Carmine\bin\Debug\Carmine.exe.config
-C:\private\source\Carmine\bin\Debug\Carmine.exe
-C:\private\source\Carmine\bin\Debug\Carmine.pdb
 C:\private\source\Carmine\Carmine\obj\Debug\MainWindow.baml
 C:\private\source\Carmine\Carmine\obj\Debug\Carmine.g.resources
 C:\private\source\Carmine\Carmine\obj\Debug\Carmine.Properties.Resources.resources
 C:\private\source\Carmine\Carmine\obj\Debug\Carmine.csproj.GenerateResource.Cache
 C:\private\source\Carmine\Carmine\obj\Debug\Carmine.exe
 C:\private\source\Carmine\Carmine\obj\Debug\Carmine.pdb
+C:\private\source\Carmine\Carmine\obj\Debug\Carmine.csprojResolveAssemblyReference.cache

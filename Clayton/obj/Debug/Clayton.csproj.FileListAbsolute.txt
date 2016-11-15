@@ -1,6 +1,5 @@
 C:\private\source\Carmine\bin\Debug\Clayton.dll
 C:\private\source\Carmine\bin\Debug\Clayton.pdb
-C:\private\source\Carmine\Clayton\obj\Debug\Clayton.csprojResolveAssemblyReference.cache
 C:\private\source\Carmine\Clayton\obj\Debug\Carmine.Properties.Resources.resources
 C:\private\source\Carmine\Clayton\obj\Debug\Clayton.csproj.GenerateResource.Cache
 C:\private\source\Carmine\Clayton\obj\Debug\Clayton.dll

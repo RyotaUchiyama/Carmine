@@ -24,3 +24,4 @@ C:\private\source\Carmine\Anthony\obj\Debug\Anthony.csproj.GenerateResource.Cach
 C:\private\source\Carmine\bin\Debug\Anthony.pdb
 C:\private\source\Carmine\bin\Debug\Anthony.dll
 C:\private\source\Carmine\Anthony\obj\Debug\Anthony.dll
+C:\private\source\Carmine\Anthony\obj\Debug\Anthony.csprojResolveAssemblyReference.cache

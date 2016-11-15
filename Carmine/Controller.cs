@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,12 +30,19 @@ namespace Carmine
         #endregion
 
         private string menuName = "Mainmenu";
+        private const string jsonSettingFileName = "setting.json";
 
         private Dictionary<string, Uri> uriDictionary;
+        private Dictionary<string, Type> jsonParamDictionary;
 
         private void Initialize()
         {
             uriDictionary = new Dictionary<string, Uri>();
+            jsonParamDictionary = new Dictionary<string, Type>();
+
+
+            this.initializeJson();
+
 
             // 初期表示メニューを追加
             uriDictionary.Add(menuName, new Uri("/Benjamin;component/MenuPage.xaml", System.UriKind.Relative));
@@ -74,5 +82,61 @@ namespace Carmine
             }
             return uriDictionary[key];
         }
+
+        private void initializeJsonParamDictionary()
+        {
+            if(jsonParamDictionary == null)
+            {
+                jsonParamDictionary = new Dictionary<string, Type>();
+            }
+
+            jsonParamDictionary.Add("width", typeof(int));
+            jsonParamDictionary.Add("height", typeof(int));
+            jsonParamDictionary.Add("width", typeof(int));
+            jsonParamDictionary.Add("width", typeof(int));
+            jsonParamDictionary.Add("width", typeof(int));
+        }
+
+        private void initializeJson()
+        {
+            if (!File.Exists(jsonSettingFileName))
+            {
+                if (createJsonSettingFile())
+                {
+                    throw new Exception("CreateJsonFileError");
+                }
+            }
+
+            string readedText = string.Empty;
+            if((readedText = util.FileIO.TextFileReader(jsonSettingFileName)) == string.Empty)
+            {
+                if (createJsonSettingFile())
+                {
+                    throw new Exception("CreateJsonFileError");
+                }
+            }
+
+            dynamic jsonObj = util.Json.JsonParse(readedText);
+
+            int width = (int)jsonObj.width;
+            int height = (int)jsonObj.height;
+            bool isFullScreen = (bool)jsonObj.isFullScreen;
+
+
+        }
+        private bool createJsonSettingFile()
+        {
+            var obj = new
+            {
+                width = 800,
+                height = 600,
+                isFullScreen = false
+            };
+
+            string jsonStr = Carmine.util.Json.CreateJsonString(obj);
+
+            return util.FileIO.TextFileWriter(jsonStr, jsonSettingFileName);
+        }
+
     }
 }

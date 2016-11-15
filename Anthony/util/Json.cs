@@ -7,7 +7,7 @@ using Codeplex.Data;
 
 namespace Carmine.util
 {
-    class Json
+    public class Json
     {
         public static dynamic JsonParse(string jsonString)
         {

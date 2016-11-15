@@ -57,6 +57,12 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MenuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Anthony\Anthony.csproj">
       <Project>{3ba5155f-505b-4240-86a4-f4e51f4204fb}</Project>
       <Name>Anthony</Name>
@@ -65,12 +71,6 @@
       <Project>{364939af-add5-433f-b1ed-b438899ddbf2}</Project>
       <Name>Carmine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="MenuPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

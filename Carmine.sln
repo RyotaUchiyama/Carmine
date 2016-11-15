@@ -4,13 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anthony", "Anthony\Anthony.csproj", "{3BA5155F-505B-4240-86A4-F4E51F4204FB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{364939AF-ADD5-433F-B1ED-B438899DDBF2} = {364939AF-ADD5-433F-B1ED-B438899DDBF2}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benjamin", "Benjamin\Benjamin.csproj", "{9EDC22EB-EB4F-4FB2-96A3-765CCAAB8D40}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carmine", "Carmine\Carmine.csproj", "{364939AF-ADD5-433F-B1ED-B438899DDBF2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3BA5155F-505B-4240-86A4-F4E51F4204FB} = {3BA5155F-505B-4240-86A4-F4E51F4204FB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clayton", "Clayton\Clayton.csproj", "{548FA4E8-FD75-4690-AFCC-EF0F20FF75D6}"
 EndProject
