@@ -33,16 +33,16 @@ namespace Carmine
         private const string jsonSettingFileName = "setting.json";
 
         private Dictionary<string, Uri> uriDictionary;
-        private Dictionary<string, Type> jsonParamDictionary;
+
+        private Setting jsonSetting;
+
 
         private void Initialize()
         {
             uriDictionary = new Dictionary<string, Uri>();
-            jsonParamDictionary = new Dictionary<string, Type>();
-
+            jsonSetting = new Setting();
 
             this.initializeJson();
-
 
             // 初期表示メニューを追加
             uriDictionary.Add(menuName, new Uri("/Benjamin;component/MenuPage.xaml", System.UriKind.Relative));
@@ -83,60 +83,45 @@ namespace Carmine
             return uriDictionary[key];
         }
 
-        private void initializeJsonParamDictionary()
-        {
-            if(jsonParamDictionary == null)
-            {
-                jsonParamDictionary = new Dictionary<string, Type>();
-            }
-
-            jsonParamDictionary.Add("width", typeof(int));
-            jsonParamDictionary.Add("height", typeof(int));
-            jsonParamDictionary.Add("width", typeof(int));
-            jsonParamDictionary.Add("width", typeof(int));
-            jsonParamDictionary.Add("width", typeof(int));
-        }
 
         private void initializeJson()
         {
+            // settingファイルが存在しない場合はファイルを生成する
+            // 生成に失敗した場合はExceptionを投げる
             if (!File.Exists(jsonSettingFileName))
             {
-                if (createJsonSettingFile())
+                if (!createJsonSettingFile())
                 {
                     throw new Exception("CreateJsonFileError");
                 }
             }
 
+            // 設定ファイル読み込み
+            // 設定ファイル内が空の場合は
             string readedText = string.Empty;
             if((readedText = util.FileIO.TextFileReader(jsonSettingFileName)) == string.Empty)
             {
-                if (createJsonSettingFile())
+                if (!createJsonSettingFile())
                 {
                     throw new Exception("CreateJsonFileError");
                 }
             }
 
-            dynamic jsonObj = util.Json.JsonParse(readedText);
-
-            int width = (int)jsonObj.width;
-            int height = (int)jsonObj.height;
-            bool isFullScreen = (bool)jsonObj.isFullScreen;
+            Setting s = util.Json.JsonSerializer<Setting>(readedText, Encoding.UTF8);
 
 
         }
+
         private bool createJsonSettingFile()
         {
-            var obj = new
-            {
-                width = 800,
-                height = 600,
-                isFullScreen = false
-            };
+            jsonSetting.width = 800;
+            jsonSetting.height = 600;
 
-            string jsonStr = Carmine.util.Json.CreateJsonString(obj);
+            jsonSetting.pageInfo.Add( new PageInfo(menuName, "/Benjamin;component/MenuPage.xaml"));
 
-            return util.FileIO.TextFileWriter(jsonStr, jsonSettingFileName);
+            string jsonStr = util.Json.JsonDeserializer<Setting>(jsonSetting);
+
+            return util.FileIO.TextFileWriter(jsonStr,jsonSettingFileName);
         }
-
     }
 }

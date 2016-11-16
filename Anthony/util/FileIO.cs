@@ -10,20 +10,27 @@ namespace Carmine.util
     public class FileIO
     {
 
-        public const string DEFAULT_ENCODING = "UTF-8";
+        private static Encoding defaultEncoding = Encoding.UTF8;
+        public static Encoding DefaultEncoding
+        {
+            get
+            {
+                return defaultEncoding;
+            }
+        }
 
 
         public static string TextFileReader(string fileName)
         {
-            return TextFileReader(Directory.GetCurrentDirectory(),fileName, DEFAULT_ENCODING);
+            return TextFileReader(Directory.GetCurrentDirectory(),fileName, DefaultEncoding);
         }
 
-        public static string TextFileReader(string folderPath,string fileName)
+        public static string TextFileReader(string folderPath, Encoding fileName)
         {
-            return TextFileReader(folderPath, DEFAULT_ENCODING);
+            return TextFileReader(folderPath, DefaultEncoding);
         }
 
-        public static string TextFileReader(string folderPath, string fileName, string encode)
+        public static string TextFileReader(string folderPath, string fileName, Encoding encode)
         {
             string readedText = string.Empty;
             string absoluteFilePath = Path.Combine(folderPath,fileName);
@@ -32,7 +39,7 @@ namespace Carmine.util
             {
                 using (System.IO.StreamReader sr = new System.IO.StreamReader(
                     absoluteFilePath,
-                    System.Text.Encoding.GetEncoding(encode)))
+                    encode))
                 {
                     //内容をすべて読み込む
                     readedText = sr.ReadToEnd();
@@ -67,7 +74,7 @@ namespace Carmine.util
                 return false;
             }
 
-            using (StreamWriter sw = new StreamWriter(fileFullPath,false,System.Text.Encoding.GetEncoding(DEFAULT_ENCODING)))
+            using (StreamWriter sw = new StreamWriter(fileFullPath,false,DefaultEncoding))
             {
                 sw.Write(writeText);
             }
