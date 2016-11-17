@@ -34,19 +34,57 @@ namespace Carmine
 
         private Dictionary<string, Uri> uriDictionary;
 
-        private Setting jsonSetting;
+        private MainWindowSetting jsonSetting;
 
-
+        #region Initialize
         private void Initialize()
         {
             uriDictionary = new Dictionary<string, Uri>();
-            jsonSetting = new Setting();
+            jsonSetting = new MainWindowSetting();
 
-            this.initializeJson();
-
-            // 初期表示メニューを追加
-            uriDictionary.Add(menuName, new Uri("/Benjamin;component/MenuPage.xaml", System.UriKind.Relative));
+            this.initializeSetting();
+            this.InitializeUriDictionary();
         }
+
+        private void initializeSetting()
+        {
+            // settingファイルが存在しない場合はファイルを生成する
+            // 生成に失敗した場合はExceptionを投げる
+            if (!File.Exists(jsonSettingFileName))
+            {
+                if (!createJsonSettingFile())
+                {
+                    throw new Exception("CreateJsonFileError");
+                }
+            }
+
+            // 設定ファイル読み込み
+            // 設定ファイル内が空の場合は設定ファイル再生成
+            string readedText = string.Empty;
+            if ((readedText = util.FileIO.TextFileReader(jsonSettingFileName)) == string.Empty)
+            {
+                if (!createJsonSettingFile())
+                {
+                    throw new Exception("CreateJsonFileError");
+                }
+            }
+
+            jsonSetting = util.Json.JsonSerializer<MainWindowSetting>(readedText, Encoding.UTF8);
+        }
+
+        private void InitializeUriDictionary()
+        {
+            if(jsonSetting == null && jsonSetting.PageInfoList == null )
+            {
+                return;
+            }
+
+            foreach(PageInfo pi in jsonSetting.PageInfoList)
+            {
+                uriDictionary.Add(pi.MenuName, new Uri(pi.MenuUri, System.UriKind.RelativeOrAbsolute));
+            }
+        }
+        #endregion
 
         public Uri Mainmenu 
         {
@@ -83,44 +121,14 @@ namespace Carmine
             return uriDictionary[key];
         }
 
-
-        private void initializeJson()
-        {
-            // settingファイルが存在しない場合はファイルを生成する
-            // 生成に失敗した場合はExceptionを投げる
-            if (!File.Exists(jsonSettingFileName))
-            {
-                if (!createJsonSettingFile())
-                {
-                    throw new Exception("CreateJsonFileError");
-                }
-            }
-
-            // 設定ファイル読み込み
-            // 設定ファイル内が空の場合は
-            string readedText = string.Empty;
-            if((readedText = util.FileIO.TextFileReader(jsonSettingFileName)) == string.Empty)
-            {
-                if (!createJsonSettingFile())
-                {
-                    throw new Exception("CreateJsonFileError");
-                }
-            }
-
-            Setting s = util.Json.JsonSerializer<Setting>(readedText, Encoding.UTF8);
-
-
-        }
-
         private bool createJsonSettingFile()
         {
-            jsonSetting.width = 800;
-            jsonSetting.height = 600;
+            // 各パラメータの初期値はSettingに記載する
+            // 初期表示メニューを登録
+            jsonSetting.PageInfoList.Add( new PageInfo(menuName, "/Benjamin;component/MenuPage.xaml"));
 
-            jsonSetting.pageInfo.Add( new PageInfo(menuName, "/Benjamin;component/MenuPage.xaml"));
-
-            string jsonStr = util.Json.JsonDeserializer<Setting>(jsonSetting);
-
+            // json文字列生成してファイル作成
+            string jsonStr = util.Json.JsonDeserializer<MainWindowSetting>(jsonSetting);
             return util.FileIO.TextFileWriter(jsonStr,jsonSettingFileName);
         }
     }
