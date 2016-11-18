@@ -23,6 +23,15 @@ namespace Carmine
         public MenuPage()
         {
             InitializeComponent();
+            MenuIcon mi = new MenuIcon();
+            mi.IconSource = "";
+            mi.IconText = "テスト";
+            this.AddMenu(mi);
+        }
+
+        public void AddMenu(MenuIcon menuIcon)
+        {
+            this.MenuStackPanel.Children.Add(menuIcon);
         }
     }
 }

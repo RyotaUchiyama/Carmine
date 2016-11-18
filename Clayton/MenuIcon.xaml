@@ -5,8 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Carmine"
              mc:Ignorable="d" 
-             d:DesignHeight="120" d:DesignWidth="120">
-    <Grid>
-        
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Image Grid.Column="0" Grid.Row="0" x:Name="IconImage" Width="150" Height="150" />
+        <TextBlock Grid.Column="0" Grid.Row="1" x:Name="IconName" Margin="4" FontSize="12" TextAlignment="Center" />
     </Grid>
 </UserControl>

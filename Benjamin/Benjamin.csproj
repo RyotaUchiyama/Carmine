@@ -71,6 +71,10 @@
       <Project>{364939af-add5-433f-b1ed-b438899ddbf2}</Project>
       <Name>Carmine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Clayton\Clayton.csproj">
+      <Project>{548fa4e8-fd75-4690-afcc-ef0f20ff75d6}</Project>
+      <Name>Clayton</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
