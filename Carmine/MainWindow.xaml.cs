@@ -20,7 +20,7 @@ namespace Carmine
     /// </summary>
     public partial class MainWindow : Window
     {
-        private NavigationService navi;
+        private NavigationService navi { set; get; }
 
         public MainWindow()
         {

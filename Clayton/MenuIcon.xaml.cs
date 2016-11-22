@@ -66,7 +66,6 @@ namespace Carmine
             }
         }
 
-        // 依存プロパティが変更されたとき呼ばれるコールバック関数の定義
         private static void OnIconContentChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             // オブジェクトを取得して処理する

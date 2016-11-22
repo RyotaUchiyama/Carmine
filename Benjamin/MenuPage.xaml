@@ -4,8 +4,27 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Carmine"
+      xmlns:clayton="clr-namespace:Carmine;assembly=Clayton"
       mc:Ignorable="d" 
       Title="MenuPage">
+    <ItemsControl x:Name="MenuControl" ItemsSource="{Binding menuItems}" Background="Aquamarine" 
+               PreviewMouseLeftButtonDown="MenuPanel_PreviewMouseLeftButtonDown"
+               PreviewMouseMove="MenuPanel_PreviewMouseMove"
+               PreviewMouseLeftButtonUp="MenuPanel_PreviewMouseLeftButtonUp"
+               >
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <StackPanel>
+                    <clayton:MenuIcon IconSource="{Binding iconSource}" IconText="{Binding iconText}"/>
+                </StackPanel>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
 
-    <StackPanel x:Name="MenuStackPanel" Background="Aquamarine" />
+    </ItemsControl>
+
 </local:BasePage>

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="DynamicJson.cs" />
     <Compile Include="util\FileIO.cs" />
+    <Compile Include="util\ItemControlUtil.cs" />
     <Compile Include="util\Json.cs" />
   </ItemGroup>
   <ItemGroup>

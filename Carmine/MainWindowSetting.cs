@@ -22,20 +22,23 @@ namespace Carmine
         }
     }
 
-
     [DataContract]
     public class PageInfo
     {
-        [DataMember]
+        [DataMember(Name = "MenuName")]
         public string MenuName { set; get; }
 
-        [DataMember]
+        [DataMember(Name = "MenuUri")]
         public string MenuUri { set; get; }
 
-        public PageInfo(string menuName, string menuUri)
+        [DataMember(Name = "IsVisible")]
+        public bool IsVisible { set; get; } = false;
+
+        public PageInfo(string menuName, string menuUri,bool isVisible)
         {
             MenuName = menuName;
             MenuUri = menuUri;
+            IsVisible = isVisible;
         }
     }
 }

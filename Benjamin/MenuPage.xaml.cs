@@ -23,15 +23,91 @@ namespace Carmine
         public MenuPage()
         {
             InitializeComponent();
-            MenuIcon mi = new MenuIcon();
-            mi.IconSource = "";
-            mi.IconText = "テスト";
-            this.AddMenu(mi);
+            
         }
 
         public void AddMenu(MenuIcon menuIcon)
         {
-            this.MenuStackPanel.Children.Add(menuIcon);
+            
         }
+
+        #region ドラッグアンドドロップ操作
+        /// <summary>
+        /// ドラッグデータ
+        /// </summary>
+        private object DraggedData { set; get; }
+
+        /// <summary>
+        /// ドラッグアイテムのインデックス
+        /// </summary>
+        private int? DraggedItemIndex { set; get; }
+
+        /// <summary>
+        /// スタート位置取得
+        /// </summary>
+        private Point? StartPosition { set; get; }
+
+        private void MenuPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var itemsControl = sender as ItemsControl;
+            var draggedItem = e.OriginalSource as FrameworkElement;
+
+            if (itemsControl == null || draggedItem == null)
+            {
+                return;
+            }
+
+            DraggedData = util.ItemControlUtil.GetItemData(itemsControl,draggedItem);
+            if (DraggedData == null)
+            {
+                return;
+            }
+
+            StartPosition = this.PointToScreen(e.GetPosition(this));
+            DraggedItemIndex = util.ItemControlUtil.GetItemIndex(itemsControl,DraggedData);
+        }
+
+        /// <summary>
+        /// ドラッグ開始とする距離を移動したか
+        /// </summary>
+        private bool IsDragStartable(Vector delta)
+        {
+            return (SystemParameters.MinimumHorizontalDragDistance < Math.Abs(delta.X)) ||
+                   (SystemParameters.MinimumVerticalDragDistance < Math.Abs(delta.Y));
+        }
+
+        /// <summary>
+        /// ドラッグ＆ドロップ関連データをクリーンアップする。
+        /// </summary>
+        private void CleanUpDragDropAndDropData()
+        {
+            DraggedData = null;
+            DraggedItemIndex = null;
+            StartPosition = null;
+        }
+
+        private void MenuPanel_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            var itemsControl = sender as ItemsControl;
+            if(itemsControl == null || StartPosition == null)
+            {
+                return;
+            }
+
+            Point curPos = itemsControl.PointToScreen(e.GetPosition(itemsControl));
+            Vector diff = curPos - (Point)StartPosition;
+            if (IsDragStartable(diff))
+            {
+                DragDrop.DoDragDrop(itemsControl, DraggedData, DragDropEffects.Move);
+                CleanUpDragDropAndDropData();
+            }
+        }
+
+        private void MenuPanel_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            CleanUpDragDropAndDropData();
+        }
+
+        #endregion
     }
 }
